@@ -4,12 +4,14 @@
 # Perform the operation on the two numbers.
 # Print the result to the terminal.
 
+LANGUAGE = 'ar'
+
 import json
 with open('calculator_messages.json', 'r') as file:
     MESSAGES = json.load(file)
 
-def prompt(message):
-    print(f'==> {message}')
+def prompt(key):
+    print(f'==> {MESSAGES[LANGUAGE][key]}')
 
 def invalid_number(number_str):
     try:
@@ -19,28 +21,28 @@ def invalid_number(number_str):
 
     return False
 
-prompt(MESSAGES['welcome'])
+prompt('welcome')
 
 while True:
-    prompt(MESSAGES['first_num'])
+    prompt('first_num')
     number1 = input()
 
     while invalid_number(number1):
-        prompt(MESSAGES['invalid'])
+        prompt('invalid')
         number1 = input()
 
-    prompt(MESSAGES['second_num'])
+    prompt('second_num')
     number2 = input()
 
     while invalid_number(number2):
-        prompt(MESSAGES['invalid'])
+        prompt('invalid')
         number2 = input()
 
-    prompt(MESSAGES['operation'])
+    prompt('operation')
     operation = input()
 
     while operation not in ['1', '2', '3', '4']:
-        prompt(MESSAGES['wrong_num'])
+        prompt('wrong_num')
         operation = input()
 
     match operation:
@@ -53,11 +55,12 @@ while True:
         case '4':
             output = int(number1) / int(number2)
 
-    prompt((MESSAGES['result']) + f' {output}')
+    prompt('result')
+    print(f"==> {output}")
 
-    prompt(MESSAGES['another'])
+    prompt('another')
     again = input()
 
     if not again or again[0].lower() != 'y':
-        prompt(MESSAGES['thanks'])
+        prompt('thanks')
         break
