@@ -1,6 +1,15 @@
 def prompt(message):
     return input(f'{message}\n>>> ')
 
+def calc_monthly_payment(loan_amount, monthly_apr, dur_months):
+    if monthly_apr == 0:
+        return round(loan_amount / dur_months, 2)
+
+    monthly_payment = (loan_amount *
+        (monthly_apr / (1 - (1 + monthly_apr) ** (-dur_months))))
+    return round(monthly_payment, 2)
+
+
 while True:
     print("Welcome to the Mortgage Payment Calculator!")
     while True:
@@ -38,14 +47,12 @@ while True:
             break
         except ValueError:
             print("Invalid input. Please try again.")
-    if monthly_apr == 0:
-        monthly_payment = loan_amount / dur_months
-    else:
-        monthly_payment = (loan_amount *
-        (monthly_apr / (1 - (1 + monthly_apr) ** (-dur_months))))
-    monthly_payment = round(monthly_payment, 2)
-    print(f'Your monthly payment amount on this '
-            f'loan will be ${monthly_payment}.')
+    monthly_payment = calc_monthly_payment(loan_amount, monthly_apr, dur_months)
+    print(f'''Loan Details:
+    - Loan Amount: ${loan_amount}
+    - APR: {apr}%
+    - Duration: {dur_months} months
+    Your monthly loan amount will be be ${monthly_payment}.''')
     while True:
         ans = prompt('Would you like to calculate another monthly payment?')
         ans = ans.lower().strip()
