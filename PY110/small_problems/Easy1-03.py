@@ -5,7 +5,7 @@ def is_real_palindrome(my_string):
     new_string = ''
     for char in my_string:
         if char.isalnum():
-            new_string += char.lower()
+            new_string += char.casefold()
     return new_string == new_string[::-1]
 
 
