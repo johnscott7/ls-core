@@ -47,7 +47,7 @@ def dms(deg_float):
     minutes_int = int(minutes_float)
     seconds_float = minutes_float - minutes_int
     seconds_int = int((seconds_float) * 60)
-    return f"{degrees_int}{DEGREE}{minutes_int}'{seconds_int}\""
+    return f"{degrees_int}{DEGREE}{minutes_int:02d}'{seconds_int:02d}\""
 
 # All of these examples should print True
 print(dms(30)) # == "30°00'00\"")
