@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}My Flask App{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <nav><a href="{{ url_for('index') }}">Home</a></nav>
+  <main>{% block content %}{% endblock %}</main>
+  <p>
+    There are {{ g.number_of_users }} users
+    with a total of {{ g.user_data | total_interests }} interests.
+</p>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <h2 class="content-subhead">Search</h2>
+
+  <form action="{{ url_for('search') }}" method="get">
+    <input name="query" value="{{ query }}" />
+    <button type="submit">Search</button>
+  </form>
+
+{% if query %}
+
+  {% if found_chapters %}
+    <h2 class="content-subhead">Results for {{ query }}</h2>
+      <ul class="pure-menu-list">
+      {% for chapter_title, chapter_data in found_chapters.items() %}
+        <li class="pure-menu-item">
+          <h4>{{ chapter_title }}</h4>
+          <ul>
+            {% for para_index, paragraph in chapter_data["paragraphs"].items() %}
+              <li><a href="{{ url_for('chapter', page_num=chapter_data['number']) }}#paragraph{{ para_index }}">
+                {{ paragraph | highlight(query) | safe }}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </li>
+      {% endfor %}
+      </ul>
+    {% else %}
+        <p>Sorry, no matches were found.</p>
+  {% endif %}
+{% endif %}
+
+{% endblock %}
+

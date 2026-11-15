@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ user | capitalize }}'s' Profile{% endblock %}
+
+{% block content %}
+<section>
+  <h1>User Profile for {{ user | capitalize }}</h1>
+  <p>{{ user | capitalize }}'s email: {{ email }}</p>
+
+  {% if interests %}
+    <p>{{ user | capitalize }}'s interests include {{ interests }}</p>
+  {% else %}
+    <p>{{ user | capitalize }} has no interests.</p>
+  {% endif %}
+</section>
+
+<nav aria-label="Other user profiles">
+  <h2> Other users: </h2>
+  <ul>
+  {% for user_name in g.users %}
+    {% if user_name != user %}
+    <li>
+      <a href="{{ url_for('user_profile', name=user_name) }}">
+        {{ user_name | capitalize }}
+      </a>
+    </li>
+    {% endif %}
+  {% endfor %}
+  </ul>
+</nav>
+{% endblock %}
+
