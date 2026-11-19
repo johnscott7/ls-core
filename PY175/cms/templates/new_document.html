@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+  <form action="{{ url_for('create_document') }}" method="POST">
+  <label for="new_file">Add a new document: </label><br>
+  <input type="text" id="new_file" name="filename">
+  <input type="submit" value="Create">
+  </form>
+{% endblock %}

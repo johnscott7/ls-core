@@ -1,0 +1,59 @@
+/* Completed project reference: https://d3jtzah944tvom.cloudfront.net/lesson_5/nutrition_facts_label/label.html */
+
+/* MDN Selectors: https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Selectors */
+
+/* Use precisely one class (though the HTML applies it to more than one element*/
+
+body {
+    font-family: "Franklin Gothic Heavy", "Helvetica Black", Helvetica, Arial;
+    width: 600px;
+    font-size: 1.2rem;
+}
+
+p {
+    max-width: 95%;
+}
+
+table:first-of-type tbody tr > :last-child {
+  text-align: right;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table:last-of-type {
+    width: 95%;
+}
+
+dl {
+    font-size: 1.3rem;
+}
+
+thead th {
+    text-align: left;
+}
+
+h1 {
+  border-bottom: 12px solid black;
+}
+
+table tr {
+  border-top: 1px solid black;
+}
+
+dl {
+  margin: 0;
+}
+
+dt,
+dd {
+  display: inline;
+  margin: 0;
+}
+
+dd::after {
+  content: "";
+  display: block;
+}

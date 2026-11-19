@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}File List{% endblock %}
+
+{% block content %}
+  <form action="{{ url_for('signin') }}" method="POST">
+  <label for="username">Username: </label>
+  <input type="text" id="username" name="username" value="{{ request.form.username | default('') }}"><br>
+  <label for="password">Password: </label>
+  <input type="password" id="password" name="password">
+  <input type="submit" value="Sign In"><br>
+  </form>
+{% endblock %}

@@ -7,7 +7,9 @@ PY109/
 PY119/
 PY129/
 PY139/
+PY175/todo_list/
 SPOT/
 
 __pycache__/
 *.pyc
+*:Zone.Identifier
